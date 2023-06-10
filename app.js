@@ -11,7 +11,7 @@ const messageRouter = require('./routes/messagesRoutes');
 
 //middlewares
 app.use(express.json());
-app.use(cors({ origin: '*' })); // Updated line to accept all origins
+app.use(cors({ origin: true, credentials: true })); // Updated line to accept all origins with credentials
 
 //routes
 app.get('/', (req, res) => {
