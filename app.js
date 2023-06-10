@@ -11,7 +11,7 @@ const messageRouter = require('./routes/messagesRoutes');
 
 //middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: '*' })); // Updated line to accept all origins
 
 //routes
 app.get('/', (req, res) => {
@@ -47,5 +47,4 @@ app.use((err, req, res, next) => {
     next();
 })
 
-
-module.exports = app
+module.exports = app;
