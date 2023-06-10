@@ -1,4 +1,4 @@
-
+const express = require('express');
 const socket = require('socket.io');
 
 const app = require('./app');
@@ -13,7 +13,9 @@ const server = app.listen(3030, () => {
 
 const io = socket(server, {
     cors: {
-        origin: '*',
+        origin: (origin, callback) => {
+            callback(null, true);
+        },
         credentials: true
     }
 });
@@ -33,6 +35,5 @@ io.on('connection', socket => {
             socket.to(sendUserSocket).emit('msg-receive', data.message)
         }
     })
-
 
 })
